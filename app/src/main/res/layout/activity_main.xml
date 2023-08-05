@@ -6,12 +6,24 @@
     android:layout_height="match_parent"
     tools:context=".MainActivity">
 
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="TextView"
+        app:layout_constraintBottom_toTopOf="@+id/btmNav"
+        app:layout_constraintEnd_toEndOf="@+id/mViewPageNav"
+        app:layout_constraintStart_toStartOf="@+id/mViewPageNav"
+        app:layout_constraintTop_toTopOf="@+id/mViewPageNav" />
+
     <androidx.viewpager2.widget.ViewPager2
         android:id="@+id/mViewPageNav"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         tools:layout_editor_absoluteX="0dp"
-        tools:layout_editor_absoluteY="0dp" />
+        tools:layout_editor_absoluteY="0dp">
+
+    </androidx.viewpager2.widget.ViewPager2>
 
     <com.google.android.material.bottomnavigation.BottomNavigationView
         android:id="@+id/btmNav"
