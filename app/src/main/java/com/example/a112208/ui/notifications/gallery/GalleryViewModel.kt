@@ -1,4 +1,4 @@
-package com.example.a112208.ui.gallery
+package com.example.a112208.ui.notifications.gallery
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
