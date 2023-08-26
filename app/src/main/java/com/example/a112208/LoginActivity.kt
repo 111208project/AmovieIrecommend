@@ -20,7 +20,7 @@ class LoginActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_login)
 
-        /*網路連線請求(連不上)--------------------------------------------------------*/
+        /*網路連線請求(連上了)--------------------------------------------------------*/
         val okHttpClient = OkHttpClient()
         val request = Request.Builder()
             .url("http://140.131.114.157:5000")
@@ -42,8 +42,8 @@ class LoginActivity : AppCompatActivity() {
                 }
             }
         })
-        /*網路連線請求(連不上)--------------------------------------------------------*/
-        
+        /*網路連線請求(連上了)--------------------------------------------------------*/
+
         val btnLogin = findViewById<Button>(R.id.btnlogin)
         val etUsername = findViewById<EditText>(R.id.txtusername)
         val etPassword = findViewById<EditText>(R.id.txtpassword)
