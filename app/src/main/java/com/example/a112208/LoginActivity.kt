@@ -4,45 +4,16 @@ import android.content.Intent
 import android.os.Bundle
 import android.widget.Button
 import android.widget.EditText
-import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
-import androidx.viewpager2.widget.ViewPager2
-import com.google.android.material.bottomnavigation.BottomNavigationView
-import okhttp3.*
-import java.io.IOException
-import android.util.Log
+
+
 
 class LoginActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
-
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_login)
-
-        /*網路連線請求(連上了)--------------------------------------------------------*/
-        val okHttpClient = OkHttpClient()
-        val request = Request.Builder()
-            .url("http://140.131.114.157:5000")
-            .build()
-
-        okHttpClient.newCall(request).enqueue(object : Callback {
-            override fun onFailure(call: Call, e: IOException) {
-                runOnUiThread {
-                    Toast.makeText(this@LoginActivity, "網路連接失敗", Toast.LENGTH_LONG).show()
-                }
-                Log.d("NetworkError", "網路連接失敗: ${e.message}")
-            }
-
-            override fun onResponse(call: Call, response: Response) {
-                val responseBody = response.body?.string()
-                runOnUiThread {
-                    val textView = findViewById<TextView>(R.id.textView)
-                    textView.text = responseBody
-                }
-            }
-        })
-        /*網路連線請求(連上了)--------------------------------------------------------*/
 
         val btnLogin = findViewById<Button>(R.id.btnlogin)
         val etUsername = findViewById<EditText>(R.id.txtusername)
