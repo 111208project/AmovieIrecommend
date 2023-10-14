@@ -2,6 +2,7 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/choose"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".ChooseActivity">
@@ -46,6 +47,7 @@
                 android:src="@drawable/technology" />
 
             <CheckBox
+                android:id="@+id/checkbox1"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:gravity="center"
@@ -67,6 +69,7 @@
                 android:src="@drawable/action" />
 
             <CheckBox
+                android:id="@+id/checkbox2"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:gravity="center"
@@ -98,10 +101,11 @@
                 app:srcCompat="@drawable/confuse" />
 
             <CheckBox
+                android:id="@+id/checkbox3"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:gravity="center"
-                android:text="懸疑"/>
+                android:text="懸疑" />
 
         </LinearLayout>
 
@@ -116,9 +120,10 @@
                 android:layout_width="100dp"
                 android:layout_height="100dp"
                 android:scaleType="centerCrop"
-                app:srcCompat="@drawable/like"/>
+                app:srcCompat="@drawable/like" />
 
             <CheckBox
+                android:id="@+id/checkbox4"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:gravity="center"
@@ -146,7 +151,7 @@
                 android:layout_width="100dp"
                 android:layout_height="100dp"
                 android:scaleType="centerCrop"
-                app:srcCompat="@drawable/funny"/>
+                app:srcCompat="@drawable/funny" />
 
             <CheckBox
                 android:id="@+id/checkbox5"
@@ -168,9 +173,10 @@
                 android:layout_width="100dp"
                 android:layout_height="100dp"
                 android:scaleType="centerCrop"
-                app:srcCompat="@drawable/scare"/>
+                app:srcCompat="@drawable/scare" />
 
             <CheckBox
+                android:id="@+id/checkbox6"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:gravity="center"
