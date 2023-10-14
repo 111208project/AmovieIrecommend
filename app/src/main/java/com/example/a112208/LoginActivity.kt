@@ -26,6 +26,7 @@ class LoginActivity : AppCompatActivity() {
 
         // 初始化用戶界面元素
         val btnLogin = findViewById<Button>(R.id.btnlogin)
+        val btnForget = findViewById<Button>(R.id.btnforget)
         val etUsername = findViewById<EditText>(R.id.txtusername)
         val etPassword = findViewById<EditText>(R.id.txtpassword)
 
@@ -62,6 +63,11 @@ class LoginActivity : AppCompatActivity() {
                 // 如果用戶名或密碼不正確，顯示錯誤消息
                 Toast.makeText(this@LoginActivity, "請確認使用者名稱或密碼", Toast.LENGTH_SHORT).show()
             }
+        }
+        //跳轉至註冊介面
+        btnForget.setOnClickListener{
+            val register = Intent(this@LoginActivity, Register::class.java)
+            startActivity(register)
         }
     }
 

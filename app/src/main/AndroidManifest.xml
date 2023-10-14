@@ -22,6 +22,9 @@
          <activity
          android:name=".MainActivity"
          android:exported="false" />
+        <activity
+            android:name=".Register"
+            android:exported="false" />
         <!-- android:label="@string/title_activity_admin" -->
         <!-- android:theme="@style/Theme.112208.NoActionBar" /> -->
         <!-- <activity -->
