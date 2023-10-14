@@ -2,13 +2,12 @@ package com.example.a112208
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import com.google.android.material.navigation.NavigationView
-import android.view.MenuItem
-import androidx.viewpager2.adapter.FragmentStateAdapter
 import androidx.fragment.app.Fragment
-import androidx.fragment.app.FragmentActivity
-import androidx.viewpager.widget.ViewPager
+import androidx.viewpager2.adapter.FragmentStateAdapter
 import androidx.viewpager2.widget.ViewPager2
+import com.example.a112208.fragments.Fragment_favorite
+import com.example.a112208.fragments.Fragment_home
+import com.example.a112208.fragments.Fragment_user
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.google.android.material.navigation.NavigationBarView
 
@@ -68,11 +67,11 @@ class ViewPagerAdapter(Activity: MainActivity) : FragmentStateAdapter(Activity) 
 
     override fun getItemCount()=3
 
-    override fun createFragment(position: Int)= when(position){
-        0->fragment_home.newInstance("","")
-        1->fragment_favorite.newInstance("","")
-        2->fragment_user.newInstance("","")
-        else->fragment_home()
+    override fun createFragment(position: Int): Fragment = when(position){
+        0-> Fragment_home.newInstance("","")
+        1-> Fragment_favorite.newInstance("","")
+        2-> Fragment_user.newInstance("","")
+        else-> Fragment_home()
     }
 
 }
