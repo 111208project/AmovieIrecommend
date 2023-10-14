@@ -10,6 +10,8 @@ data class InterestRequest(val interests: List<String>)
 data class RecommendedContentResponse(val recommendedContent: List<String>)
 
 
+
+
 interface ApiService {
     @POST("login")
     fun login(@Body request: LoginRequest): Call<ResponseBody>
