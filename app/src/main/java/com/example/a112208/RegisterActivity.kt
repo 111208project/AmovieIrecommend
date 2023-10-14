@@ -5,6 +5,7 @@ import android.widget.Button
 import android.widget.EditText
 import androidx.appcompat.app.AppCompatActivity
 import com.example.a112208.api.ApiService
+import com.example.a112208.api.LoginRequest
 import okhttp3.OkHttpClient
 import okhttp3.Request
 import retrofit2.Retrofit
@@ -30,9 +31,8 @@ class RegisterActivity : AppCompatActivity(){
 
 
 
-
         btnSubmit.setOnClickListener{
-
+            
         }
 
 
