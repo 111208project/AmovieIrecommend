@@ -11,6 +11,7 @@ import java.io.IOException
 import android.util.Log
 import com.example.a112208.api.ApiService
 import com.example.a112208.api.LoginRequest
+
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -34,6 +35,7 @@ class LoginActivity : AppCompatActivity() {
         setContentView(R.layout.activity_login)
 
         val btnLogin = findViewById<Button>(R.id.btnlogin)
+        val btnForget = findViewById<Button>(R.id.btnforget)
         val etUsername = findViewById<EditText>(R.id.txtusername)
         val etPassword = findViewById<EditText>(R.id.txtpassword)
 
@@ -64,5 +66,10 @@ class LoginActivity : AppCompatActivity() {
             })
 
         }
+        btnForget.setOnClickListener {
+            val intent = Intent(this@LoginActivity, RegisterActivity::class.java)
+            startActivity(intent)
+        }
+
     }
 }

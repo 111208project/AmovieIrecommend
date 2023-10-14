@@ -2,9 +2,10 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/register"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".Register">
+    tools:context=".RegisterActivity">
 
     <ImageView
         android:id="@+id/imageView2"
@@ -36,7 +37,7 @@
             android:textSize="24sp" />
 
         <EditText
-            android:id="@+id/editTextText2"
+            android:id="@+id/username"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:ems="10"
@@ -53,7 +54,7 @@
             android:textSize="24sp" />
 
         <EditText
-            android:id="@+id/editTextText3"
+            android:id="@+id/password"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:ems="10"
@@ -70,7 +71,7 @@
             android:textSize="24sp" />
 
         <EditText
-            android:id="@+id/editTextText4"
+            android:id="@+id/email"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:ems="10"
@@ -85,5 +86,6 @@
             android:text="送出"
             android:textSize="24sp" />
     </LinearLayout>
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>
