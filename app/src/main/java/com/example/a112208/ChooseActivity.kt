@@ -8,7 +8,7 @@ import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.example.a112208.api.ApiService
 import com.example.a112208.api.InterestRequest
-import com.example.a112208.api.RecommendedContentResponse // 新增的 import
+import com.example.a112208.api.RecommendedContentResponse
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -19,7 +19,7 @@ class ChooseActivity : AppCompatActivity() {
 
     private val apiService: ApiService by lazy {
         val retrofit = Retrofit.Builder()
-            .baseUrl("http://140.131.114.157:5000/")
+            .baseUrl("http://140.131.114.157:5000/") // 請確保這裡是正確的 API 端點
             .addConverterFactory(GsonConverterFactory.create())
             .build()
 
@@ -37,7 +37,6 @@ class ChooseActivity : AppCompatActivity() {
         val checkbox4 = findViewById<CheckBox>(R.id.checkbox4)
         val checkbox5 = findViewById<CheckBox>(R.id.checkbox5)
         val checkbox6 = findViewById<CheckBox>(R.id.checkbox6)
-        // ... 初始化其他的checkbox ...
 
         btnChoose.setOnClickListener {
             val interests = mutableListOf<String>()
@@ -60,7 +59,6 @@ class ChooseActivity : AppCompatActivity() {
             if (checkbox6.isChecked) {
                 interests.add("恐怖")
             }
-            // ... 檢查其他的checkbox ...
 
             if (interests.isNotEmpty()) {
                 sendInterestsToServer(interests)
@@ -77,12 +75,10 @@ class ChooseActivity : AppCompatActivity() {
                 if (response.isSuccessful) {
                     val recommendedContent = response.body()?.recommendedContent
 
-                    // 將推薦內容傳遞到下一個畫面
                     val intent = Intent(this@ChooseActivity, MainActivity::class.java)
-                    // 將推薦內容放入 intent 中
                     intent.putStringArrayListExtra("recommendedContent", ArrayList(recommendedContent))
                     startActivity(intent)
-                    finish() // 結束 ChooseActivity，避免返回到選擇興趣的畫面
+                    finish()
                 } else {
                     Toast.makeText(this@ChooseActivity, "伺服器回應失敗", Toast.LENGTH_SHORT).show()
                 }
