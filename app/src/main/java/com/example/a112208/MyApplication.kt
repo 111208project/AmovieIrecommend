@@ -24,16 +24,16 @@ class MyApplication : Application() {
     override fun onCreate() {
         super.onCreate()
 
-        // 在应用启动时连接到 Flask 服务并初始化数据库
+        // 在應用啟動時連結到 Flask 服務並初始化資料庫
         initDatabase()
     }
 
     private fun initDatabase() {
-        // 在这里处理初始化数据库的逻辑，包括创建表和插入初始数据
+        // 在這裡初始化資料庫的邏輯，包括創建表和插入初始數據
         val username = "123"
         val password = "123"
 
-        // 创建用户数据
+        // 創建用戶數據
         val request = LoginRequest(username, password)
         apiService.registerUser(request).enqueue(object : Callback<Void> {
             override fun onResponse(call: Call<Void>, response: Response<Void>) {

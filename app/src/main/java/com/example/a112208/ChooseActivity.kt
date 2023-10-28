@@ -2,8 +2,10 @@ package com.example.a112208
 
 import android.content.Intent
 import android.os.Bundle
+import android.view.View
 import android.widget.Button
 import android.widget.CheckBox
+import android.widget.ImageView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.example.a112208.api.ApiService
@@ -37,6 +39,33 @@ class ChooseActivity : AppCompatActivity() {
         val checkbox4 = findViewById<CheckBox>(R.id.checkbox4)
         val checkbox5 = findViewById<CheckBox>(R.id.checkbox5)
         val checkbox6 = findViewById<CheckBox>(R.id.checkbox6)
+
+        val imageView1 = findViewById<ImageView>(R.id.my_image_view)
+        val imageView2 = findViewById<ImageView>(R.id.ImageView2)
+        val imageView3 = findViewById<ImageView>(R.id.ImageView3)
+        val imageView4 = findViewById<ImageView>(R.id.ImageView4)
+        val imageView5 = findViewById<ImageView>(R.id.ImageView5)
+        val imageView6 = findViewById<ImageView>(R.id.ImageView6)
+        // 為圖片增加點擊監聽
+        imageView1.setOnClickListener(View.OnClickListener {
+            // 切換選中狀態
+            checkbox1.isChecked = !checkbox1.isChecked
+        })
+        imageView2.setOnClickListener(View.OnClickListener {
+            checkbox2.isChecked = !checkbox2.isChecked
+        })
+        imageView3.setOnClickListener(View.OnClickListener {
+            checkbox3.isChecked = !checkbox3.isChecked
+        })
+        imageView4.setOnClickListener(View.OnClickListener {
+            checkbox4.isChecked = !checkbox4.isChecked
+        })
+        imageView5.setOnClickListener(View.OnClickListener {
+            checkbox5.isChecked = !checkbox5.isChecked
+        })
+        imageView6.setOnClickListener(View.OnClickListener {
+            checkbox6.isChecked = !checkbox6.isChecked
+        })
 
         btnChoose.setOnClickListener {
             val interests = mutableListOf<String>()
@@ -89,4 +118,5 @@ class ChooseActivity : AppCompatActivity() {
             }
         })
     }
+
 }

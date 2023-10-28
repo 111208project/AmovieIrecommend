@@ -7,13 +7,14 @@ import android.view.View
 import android.view.ViewGroup
 import com.example.a112208.R
 
+
+
 class Fragment_favorite : Fragment() {
     companion object {
-        fun newInstance(param1: String, param2: String): Fragment_favorite {
+        fun newInstance(param1: String = "DefaultParam1"): Fragment_favorite {
             val fragment = Fragment_favorite()
             val args = Bundle()
             args.putString("param1", param1)
-            args.putString("param2", param2)
             fragment.arguments = args
             return fragment
         }
@@ -25,4 +26,5 @@ class Fragment_favorite : Fragment() {
     ): View? {
         return inflater.inflate(R.layout.fragment_favorite, container, false)
     }
+
 }

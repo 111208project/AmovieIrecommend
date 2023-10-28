@@ -3,7 +3,9 @@ package com.example.a112208
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
+import com.example.a112208.fragments.Fragment_favorite
 import com.example.a112208.fragments.Fragment_home
+import com.example.a112208.fragments.Fragment_user
 import com.google.android.material.bottomnavigation.BottomNavigationView
 
 class MainActivity : AppCompatActivity() {
@@ -14,8 +16,16 @@ class MainActivity : AppCompatActivity() {
                 loadFragment(Fragment_home.newInstance(intent.getStringArrayListExtra("recommendedContent") ?: arrayListOf()))
                 return@OnNavigationItemSelectedListener true
             }
+            R.id.btnLeft -> {
+                loadFragment(Fragment_favorite.newInstance())
+                return@OnNavigationItemSelectedListener true
+            }
             // 這裡可以加入其他的 Fragment
-            else -> return@OnNavigationItemSelectedListener false
+            R.id.btnRight -> {
+                loadFragment(Fragment_user.newInstance())
+                return@OnNavigationItemSelectedListener true
+            }
+            else ->return@OnNavigationItemSelectedListener false
         }
     }
 

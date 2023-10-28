@@ -47,13 +47,13 @@ class LoginActivity : AppCompatActivity() {
             apiService.login(request).enqueue(object : Callback<ResponseBody> {
                 override fun onResponse(call: Call<ResponseBody>, response: Response<ResponseBody>) {
                     if (response.isSuccessful) {
-                        // 登錄成功處理邏輯
+                        // 登入成功處理邏輯
                         val intent = Intent(this@LoginActivity, ChooseActivity::class.java)
                         startActivity(intent)
-                        finish() // 結束 LoginActivity，避免返回到登錄畫面
+                        finish() // 結束 LoginActivity，避免返回到登入畫面
                     } else {
-                        // 登錄失敗處理邏輯
-                        Toast.makeText(this@LoginActivity, "登錄失敗", Toast.LENGTH_SHORT).show()
+                        // 登入失敗處理邏輯
+                        Toast.makeText(this@LoginActivity, "登入失敗", Toast.LENGTH_SHORT).show()
                     }
                 }
 
