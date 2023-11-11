@@ -31,7 +31,14 @@ class RegisterActivity : AppCompatActivity() {
             val apiService = ApiClient.getApiClient().create(ApiService::class.java)
 
             val request = LoginRequest(usernameText, passwordText)
-
+            if(usernameText==""){
+                Toast.makeText(this@RegisterActivity, "帳號不能為空", Toast.LENGTH_SHORT).show()
+                return@setOnClickListener
+            }
+            if(passwordText==""){
+                Toast.makeText(this@RegisterActivity, "密碼不能為空", Toast.LENGTH_SHORT).show()
+                return@setOnClickListener
+            }
             apiService.registerUser(request).enqueue(object : Callback<Void> {
                 override fun onResponse(call: Call<Void>, response: Response<Void>) {
                     if (response.isSuccessful) {
