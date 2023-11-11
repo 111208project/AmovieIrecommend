@@ -6,11 +6,11 @@
         android:icon="@drawable/home"
         android:title="主頁" />
     <item
-        android:id="@+id/btnLeft"
+        android:id="@+id/navigation_favorite"
         android:icon="@drawable/love"
         android:title="喜好" />
     <item
-        android:id="@+id/btnRight"
+        android:id="@+id/navigation_profile"
         android:icon="@drawable/user"
         android:title="個人主頁"
         />
