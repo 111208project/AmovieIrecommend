@@ -9,22 +9,15 @@ import androidx.fragment.app.Fragment
 import com.example.a112208.R
 
 class Fragment_home : Fragment() {
-    private lateinit var recommendedContent: List<String>
+    private lateinit var tvRecommendedContent: TextView
 
     companion object {
-        fun newInstance(recommendedContent: ArrayList<String>): Fragment_home {
+        fun newInstance(userInterests: ArrayList<String>): Fragment_home {
             val fragment = Fragment_home()
             val args = Bundle()
-            args.putStringArrayList("recommendedContent", recommendedContent)
+            args.putStringArrayList("userInterests", userInterests)
             fragment.arguments = args
             return fragment
-        }
-    }
-
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        arguments?.let {
-            recommendedContent = it.getStringArrayList("recommendedContent") ?: emptyList()
         }
     }
 
@@ -33,11 +26,15 @@ class Fragment_home : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         val view = inflater.inflate(R.layout.fragment_home, container, false)
-        val recommendedContentTextView: TextView = view.findViewById(R.id.tvRecommendedContent)
+        tvRecommendedContent = view.findViewById(R.id.tvRecommendedContent)
 
-        // 將推薦內容設定到 TextView 中
-        val recommendedContentString = recommendedContent.joinToString(", ")
-        recommendedContentTextView.text = "推薦內容：$recommendedContentString"
+        // 获取传递过来的用户兴趣数据
+        val userInterests = arguments?.getStringArrayList("userInterests")
+        // TODO: 获取推荐内容数据（如果有的话）
+
+        // 将用户兴趣数据和推荐内容数据设置到 TextView 中
+        val interestsText = userInterests?.joinToString(", ") ?: "无兴趣数据"
+        tvRecommendedContent.text = "用戶興趣：$interestsText"
 
         return view
     }
