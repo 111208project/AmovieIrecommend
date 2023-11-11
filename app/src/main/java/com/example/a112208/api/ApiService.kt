@@ -4,19 +4,29 @@ import okhttp3.ResponseBody
 import retrofit2.Call
 import retrofit2.http.Body
 import retrofit2.http.POST
+import retrofit2.http.Query
 
 data class LoginRequest(val username: String, val password: String)
-data class InterestRequest(val interests: List<String>)
+data class InterestRequest(val interests: List<String>, val username: String)
+data class InterestResponse(val interests: List<String>, val firstLogin: Boolean)
+data class RecommendedContentRequest(val username: String)
+
 data class RecommendedContentResponse(val recommendedContent: List<String>)
-
-
-
 
 interface ApiService {
     @POST("login")
-    fun login(@Body request: LoginRequest): Call<ResponseBody>
-    @POST("register") // 这里的 "register" 是你的 Flask API 提供的注册用户的端点
+    fun login(@Body request: LoginRequest): Call<InterestResponse>
+
+    @POST("register")
     fun registerUser(@Body request: LoginRequest): Call<Void>
-    @POST("send-interests") // 新增的 API 方法，用於發送興趣選擇
-    fun sendInterests(@Body request: InterestRequest): Call<RecommendedContentResponse>
+
+    @POST("send-interests")
+    fun sendInterests(@Body request: InterestRequest, @Query("username") username: String): Call<Void>
+
+
+    @POST("get-user-interests")
+    fun getUserInterests(@Query("username") username: String): Call<InterestResponse>
+
+    @POST("get-user-interests")
+    fun getUserInterests(@Body request: RecommendedContentRequest): Call<InterestResponse>
 }

@@ -94,7 +94,7 @@
             android:textSize="24sp" />
 
         <Button
-            android:id="@+id/btnforget"
+            android:id="@+id/btnregister"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_margin="8dp"
