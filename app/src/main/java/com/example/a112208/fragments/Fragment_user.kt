@@ -19,10 +19,10 @@ import android.widget.TextView
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.ViewModelProvider
 
-private lateinit var sharedPreferences: SharedPreferences
+
 
 class Fragment_user : Fragment() {
-
+    private lateinit var sharedPreferences: SharedPreferences
     companion object {
         fun newInstance(param1: String = "DefaultParam2"): Fragment_user {
 
@@ -48,10 +48,10 @@ class Fragment_user : Fragment() {
         val logoutButton: Button = view.findViewById(R.id.logout)
 
         // 獲取共享偏好設置
-        sharedPreferences = requireContext().getSharedPreferences("MyAppPreferences", Context.MODE_PRIVATE)
-        val username = sharedPreferences.getString("username", "0")
+        sharedPreferences = requireContext().getSharedPreferences("user_prefs", Context.MODE_PRIVATE)
+        val username = sharedPreferences.getString("username", "") ?: ""
         val textView = view.findViewById<TextView>(R.id.textView)
-        textView.text = username
+        textView.text = username+"你好"
 
         // 設置變更密碼按鈕的點擊監聽器
         changePasswordButton.setOnClickListener {
@@ -112,6 +112,7 @@ class Fragment_user : Fragment() {
 
         // 返回此片段的視圖
         return view
+
     }
 
 }
