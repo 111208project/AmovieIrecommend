@@ -4,6 +4,7 @@ import android.app.Application
 import android.util.Log
 import com.example.a112208.api.ApiService
 import com.example.a112208.api.LoginRequest
+import com.example.a112208.api.Register
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -32,9 +33,9 @@ class MyApplication : Application() {
         // 在這裡初始化資料庫的邏輯，包括創建表和插入初始數據
         val username = "123"
         val password = "123"
-
+        val email ="123"
         // 創建用戶數據
-        val request = LoginRequest(username, password)
+        val request = Register(username, password,email)
         apiService.registerUser(request).enqueue(object : Callback<Void> {
             override fun onResponse(call: Call<Void>, response: Response<Void>) {
                 if (response.isSuccessful) {
