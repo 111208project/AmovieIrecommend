@@ -6,8 +6,8 @@ import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import com.example.a112208.R
+import com.example.a112208.fragments.FragmentHome
 import com.example.a112208.fragments.Fragment_favorite
-import com.example.a112208.fragments.Fragment_home
 import com.example.a112208.fragments.Fragment_user
 import com.google.android.material.bottomnavigation.BottomNavigationView
 
@@ -17,12 +17,7 @@ class MainActivity : AppCompatActivity() {
         BottomNavigationView.OnNavigationItemSelectedListener { item ->
             when (item.itemId) {
                 R.id.navigation_home -> {
-                    loadFragment(
-                        Fragment_home.newInstance(
-                            intent.getStringArrayListExtra("recommendedContent")
-                                ?: arrayListOf()
-                        )
-                    )
+                    loadFragment(FragmentHome())
                     return@OnNavigationItemSelectedListener true
                 }
                 R.id.navigation_favorite -> {
@@ -38,27 +33,23 @@ class MainActivity : AppCompatActivity() {
                 }
                 else -> return@OnNavigationItemSelectedListener false
             }
+            false
         }
+
+    private fun loadFragment(fragment: Fragment) {
+        supportFragmentManager.beginTransaction()
+            .replace(R.id.fragmentContainer, fragment)
+            .commit()
+    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
+        // 初始化時顯示 FragmentHome
+        loadFragment(FragmentHome())
+
         val navView: BottomNavigationView = findViewById(R.id.nav_view)
         navView.setOnNavigationItemSelectedListener(onNavigationItemSelectedListener)
-
-        // 預設顯示第一個 Fragment
-        loadFragment(
-            Fragment_home.newInstance(
-                intent.getStringArrayListExtra("recommendedContent") ?: arrayListOf()
-            )
-        )
-    }
-
-    private fun loadFragment(fragment: Fragment) {
-        val transaction = supportFragmentManager.beginTransaction()
-        transaction.replace(R.id.fragmentContainer, fragment)
-        transaction.addToBackStack(null)
-        transaction.commit()
     }
 }

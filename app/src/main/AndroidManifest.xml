@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools" >
-    <uses-permission android:name="android.permission.INTERNET" /><!--開啟專案使用網路的權限-->
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <uses-permission android:name="android.permission.INTERNET" />
 
     <application
         android:name=".MyApplication"
@@ -12,22 +13,21 @@
         android:label="@string/app_name"
         android:supportsRtl="true"
         android:theme="@style/Theme.112208"
-        tools:targetApi="31"
-        android:usesCleartextTraffic="true">
+        android:usesCleartextTraffic="true"
+        tools:targetApi="31">
+        <activity
+            android:name=".MovieInfoActivity"
+            android:exported="false" />
         <!-- <activity -->
         <!-- android:name=".AdminActivity" -->
         <!-- android:exported="false" -->
-         <activity
-         android:name=".MainActivity"
-         android:exported="true">
-
-        </activity>
+        <activity
+            android:name=".MainActivity"
+            android:exported="true"></activity>
         <activity
             android:name=".RegisterActivity"
-            android:label="Register Activity"
-            android:exported="false" />
-
-        <!-- android:label="@string/title_activity_admin" -->
+            android:exported="false"
+            android:label="Register Activity" /> <!-- android:label="@string/title_activity_admin" -->
         <!-- android:theme="@style/Theme.112208.NoActionBar" /> -->
         <!-- <activity -->
         <!-- android:name=".HomeActivity" -->
@@ -44,13 +44,13 @@
         <activity
             android:name=".LoginActivity"
             android:exported="true">
-            <!--啟動首頁設定-->
+
+            <!-- 啟動首頁設定 -->
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
-
         </activity>
     </application>
 
