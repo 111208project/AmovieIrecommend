@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="drawable_images">
+        <item>happy</item>
+        <item>sad</item>
+        <item>angry</item>
+        <!-- 添加更多圖片名稱 -->
+    </string-array>
+</resources>
