@@ -1,12 +1,10 @@
 package com.example.a112208.api
 
 import android.provider.ContactsContract.CommonDataKinds.Email
+import com.example.a112208.data.Movie
 import okhttp3.ResponseBody
 import retrofit2.Call
-import retrofit2.http.Body
-import retrofit2.http.POST
-import retrofit2.http.PUT
-import retrofit2.http.Query
+import retrofit2.http.*
 
 data class LoginRequest(val username: String, val password: String)
 
@@ -36,4 +34,7 @@ interface ApiService {
 
     @POST("get-user-interests")
     fun getUserInterests(@Body request: RecommendedContentRequest): Call<InterestResponse>
+
+    @GET("/get-sorted-movie-list")  
+    fun getSortedMovieList(): Call<List<Movie>>
 }

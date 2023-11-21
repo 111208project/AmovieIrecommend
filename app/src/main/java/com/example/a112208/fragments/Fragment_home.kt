@@ -12,7 +12,6 @@ import com.example.a112208.R
 import com.example.a112208.adapters.MovieAdapter
 import com.example.a112208.api.ApiClient
 import com.example.a112208.api.ApiService
-import com.example.a112208.api.SortedMovieListRequest
 import com.example.a112208.data.Movie
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.GlobalScope
