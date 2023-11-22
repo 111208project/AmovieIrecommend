@@ -21,14 +21,13 @@ class MainActivity : AppCompatActivity() {
                     return@OnNavigationItemSelectedListener true
                 }
                 R.id.navigation_favorite -> {
-                    // 处理最爱的 Fragment
-                    // 例如： loadFragment(FavoriteFragment.newInstance())
-                    Toast.makeText(this, "Favorite clicked", Toast.LENGTH_SHORT).show()
+                    loadFragment(Fragment_favorite.newInstance())
+                    Toast.makeText(this, "喜好", Toast.LENGTH_SHORT).show()
                     return@OnNavigationItemSelectedListener true
                 }
                 R.id.navigation_profile -> {
                     loadFragment(Fragment_user.newInstance())
-                    Toast.makeText(this, "Profile clicked", Toast.LENGTH_SHORT).show()
+                    Toast.makeText(this, "個人檔案", Toast.LENGTH_SHORT).show()
                     return@OnNavigationItemSelectedListener true
                 }
                 else -> return@OnNavigationItemSelectedListener false
