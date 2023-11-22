@@ -35,6 +35,6 @@ interface ApiService {
     @POST("get-user-interests")
     fun getUserInterests(@Body request: RecommendedContentRequest): Call<InterestResponse>
 
-    @GET("/get-sorted-movie-list")  
-    fun getSortedMovieList(): Call<List<Movie>>
+    @GET("/get-sorted-movie-list")
+    fun getSortedMovieList(): Call<List<Movie>>//改用手動解析這個就不用了
 }
