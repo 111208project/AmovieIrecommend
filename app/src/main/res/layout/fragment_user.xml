@@ -39,18 +39,18 @@
         </LinearLayout>
 
         <Button
+            android:id="@+id/button4"
+            android:layout_width="match_parent"
+            android:layout_height="150px"
+            android:layout_marginBottom="50px"
+            android:text="變更使用者照片" />
+
+        <Button
             android:id="@+id/button3"
             android:layout_width="match_parent"
             android:layout_height="150px"
             android:layout_marginBottom="50px"
             android:text="變更密碼" />
-
-        <Button
-            android:id="@+id/button4"
-            android:layout_width="match_parent"
-            android:layout_height="150px"
-            android:layout_marginBottom="50px"
-            android:text="變更電子郵件" />
 
         <Button
             android:id="@+id/button5"

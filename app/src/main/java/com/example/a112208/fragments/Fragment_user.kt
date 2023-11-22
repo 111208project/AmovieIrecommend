@@ -16,6 +16,8 @@ import android.content.DialogInterface
 import android.widget.EditText
 import android.content.SharedPreferences
 import android.util.Log
+import android.widget.ArrayAdapter
+import android.widget.ImageView
 import android.widget.TextView
 import android.widget.Toast
 import androidx.fragment.app.viewModels
@@ -88,7 +90,7 @@ class Fragment_user : Fragment() {
 
                 // 如果已儲存的密碼不為空，則顯示在TextView中
                 if (!savedPassword.isNullOrBlank()) {
-                    
+
 
                     // 創建 Retrofit 請求
                     val changePasswordRequest = ChangePassword(username, savedPassword)
@@ -140,5 +142,45 @@ class Fragment_user : Fragment() {
 
     }
 
+    private lateinit var ivSelectedImage: ImageView
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+
+        ivSelectedImage = view.findViewById(R.id.imageView)
+
+        // 設定按鈕點擊監聽器
+        view.findViewById<Button>(R.id.button4)?.setOnClickListener {
+            showImageSelectionDialog()
+        }
+    }
+
+    private fun showImageSelectionDialog() {
+        // 從 res/values/arrays.xml 中取得所有圖片的名稱
+        val drawableResources = resources.getStringArray(R.array.drawable_images)
+
+        // 轉換為 ArrayAdapter
+        val adapter = ArrayAdapter<String>(
+            requireContext(),
+            android.R.layout.simple_list_item_1,
+            drawableResources
+        )
+
+        // 創建 AlertDialog
+        val builder = AlertDialog.Builder(requireContext())
+        builder.setTitle("選擇圖片")
+            .setAdapter(adapter) { _, position ->
+                // 用戶選擇了一個圖片
+                val selectedImageName = drawableResources[position]
+                val resourceId = resources.getIdentifier(selectedImageName, "drawable", requireContext().packageName)
+
+                // 根據選擇的圖片 ID 設置 ImageView
+                ivSelectedImage.setImageResource(resourceId)
+            }
+
+        // 顯示 AlertDialog
+        val dialog = builder.create()
+        dialog.show()
+    }
 }
 
