@@ -25,6 +25,11 @@ class MovieinfoActivity : AppCompatActivity() {
             val intent = Intent(this@MovieinfoActivity, ScoreActivity::class.java)
             startActivity(intent)
         }
+            val button = findViewById<Button>(R.id.button2)
+        button.setOnClickListener {
+            val intent = Intent(this@MovieinfoActivity, MainActivity::class.java)
+            startActivity(intent)
+        }
 
     }
 
