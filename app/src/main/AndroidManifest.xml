@@ -15,17 +15,15 @@
         android:theme="@style/Theme.112208"
         android:usesCleartextTraffic="true"
         tools:targetApi="31">
-
+        <activity
+            android:name=".item_conment"
+            android:exported="false" />
         <activity
             android:name=".ScoreActivity"
-            android:exported="true"></activity>
+            android:exported="true" />
         <activity
             android:name=".MovieinfoActivity"
-            android:exported="true">
-
-
-        </activity>
-
+            android:exported="true"></activity>
         <activity
             android:name=".MainActivity"
             android:exported="true" />

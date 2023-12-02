@@ -21,7 +21,7 @@ class MainActivity : AppCompatActivity() {
                     return@OnNavigationItemSelectedListener true
                 }
                 R.id.navigation_favorite -> {
-                    loadFragment(Fragment_favorite.newInstance())
+                    loadFragment(Fragment_favorite())
                     Toast.makeText(this, "喜好", Toast.LENGTH_SHORT).show()
                     return@OnNavigationItemSelectedListener true
                 }
