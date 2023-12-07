@@ -22,7 +22,6 @@ import java.net.URL
 
 class FragmentHome : Fragment() {
 
-
     // 添加一個 lateinit 屬性，用於保存 RecyclerView 實例
     private lateinit var recyclerView: RecyclerView
     private lateinit var movieAdapter: MovieAdapter
@@ -31,6 +30,7 @@ class FragmentHome : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
+        // 載入 Fragment 的布局
         val view = inflater.inflate(R.layout.fragment_home, container, false)
 
         // 找到 RecyclerView 並初始化
@@ -51,6 +51,7 @@ class FragmentHome : Fragment() {
         return view
     }
 
+    // 使用協程從 Flask API 取得電影清單
     private suspend fun fetchMovieList(): List<Movie> = withContext(Dispatchers.IO) {
         val url = URL("http://140.131.114.157:5000/get-sorted-movie-list") // 替換成你的 Flask API 端點
         val jsonString = url.readText()

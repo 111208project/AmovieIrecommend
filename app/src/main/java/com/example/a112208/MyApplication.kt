@@ -13,6 +13,7 @@ import retrofit2.converter.gson.GsonConverterFactory
 
 class MyApplication : Application() {
 
+    // 使用 lazy 委託屬性，只有在真正需要使用時才初始化 ApiService
     private val apiService: ApiService by lazy {
         val retrofit = Retrofit.Builder()
             .baseUrl("http://140.131.114.157:5000/")
@@ -34,8 +35,9 @@ class MyApplication : Application() {
         val username = "123"
         val password = "123"
         val email ="123"
+
         // 創建用戶數據
-        val request = Register(username, password,email)
+        val request = Register(username, password, email)
         apiService.registerUser(request).enqueue(object : Callback<Void> {
             override fun onResponse(call: Call<Void>, response: Response<Void>) {
                 if (response.isSuccessful) {

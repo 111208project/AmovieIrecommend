@@ -20,6 +20,7 @@ import retrofit2.Response
 
 class Fragment_favorite : Fragment() {
 
+    // 声明 ApiService 和用户名变量
     private lateinit var apiService: ApiService
     private lateinit var username: String
 
@@ -27,14 +28,17 @@ class Fragment_favorite : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
+        // 載入 Fragment 的布局
         val view = inflater.inflate(R.layout.fragment_favorite, container, false)
 
+        // 初始化 ApiService
         apiService = ApiClient.getApiClient().create(ApiService::class.java)
 
-        // 從SharedPreferences中讀取用戶名
+        // 從 SharedPreferences 中讀取用戶名
         val sharedPreferences = activity?.getSharedPreferences("user_prefs", Context.MODE_PRIVATE)
         username = sharedPreferences?.getString("username", "") ?: ""
 
+        // 獲取相關的視圖元素
         val btnFavorite = view.findViewById<Button>(R.id.btnChoose)
         val checkbox1 = view.findViewById<CheckBox>(R.id.checkbox1)
         val checkbox2 = view.findViewById<CheckBox>(R.id.checkbox2)
@@ -43,9 +47,12 @@ class Fragment_favorite : Fragment() {
         val checkbox5 = view.findViewById<CheckBox>(R.id.checkbox5)
         val checkbox6 = view.findViewById<CheckBox>(R.id.checkbox6)
 
+        // 設定按鈕的點擊監聽器
         btnFavorite.setOnClickListener {
+            // 創建一個 List 來保存選中的興趣
             val interests = mutableListOf<String>()
 
+            // 檢查每個 CheckBox 是否被選中，若是，將對應的興趣加入 List
             if (checkbox1.isChecked) {
                 interests.add("1")
             }
@@ -65,33 +72,39 @@ class Fragment_favorite : Fragment() {
                 interests.add("6")
             }
 
+            // 如果選中的興趣不為空，則將其發送到伺服器
             if (interests.isNotEmpty()) {
                 sendInterestsToServer(interests)
             } else {
+                // 如果選中的興趣為空，顯示提示
                 Toast.makeText(activity, "請選擇至少一個興趣", Toast.LENGTH_SHORT).show()
-
             }
         }
         return view
     }
 
+    // 將選中的興趣發送到伺服器的方法
     private fun sendInterestsToServer(interests: List<String>) {
+        // 如果用戶名為空，可能需要重新登录或其他操作，直接返回
         if (username.isNullOrEmpty()) {
-            // 处理没有有效用户名的情况，可能需要重新登录或其他操作
             return
         }
+        // 創建 InterestRequest 對象，包含選中的興趣和用戶名
         val request = InterestRequest(interests, username)
+        // 使用 Retrofit 向伺服器發送興趣請求
         apiService.sendInterests(request, username).enqueue(object : Callback<Void> {
             override fun onResponse(call: Call<Void>, response: Response<Void>) {
                 if (response.isSuccessful) {
-                    // 兴趣保存成功
+                    // 興趣保存成功，顯示成功提示
                     Toast.makeText(activity, "興趣更改成功!", Toast.LENGTH_SHORT).show()
                 } else {
+                    // 興趣保存失敗，顯示失敗提示
                     Toast.makeText(activity, "興趣保存失败", Toast.LENGTH_SHORT).show()
                 }
             }
 
             override fun onFailure(call: Call<Void>, t: Throwable) {
+                // 網路錯誤，顯示網路錯誤提示
                 Toast.makeText(activity, "網路錯誤", Toast.LENGTH_SHORT).show()
             }
         })
